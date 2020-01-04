@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Home from './pages/Home';
+import './styles.less';
 
-
-ReactDOM.render(
-    <div>Hello World</div>,
-    document.getElementById('app')
-);
+ReactDOM.render(<Home />, document.getElementById('app'));
