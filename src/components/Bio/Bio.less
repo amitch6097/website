@@ -1,0 +1,70 @@
+.link-button {
+    text-decoration: none;
+    color: black;
+}
+
+.bio {
+    h1 {
+        text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    }
+    h2 {
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
+    background: var(--primary-color);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    width: 75%;
+    max-width: 700px;
+    border-radius: 50px;
+    min-width: 300px;
+    .bio__image {
+        border: 1px solid black;
+        border-radius: 100%;
+        margin-left: 25%;
+        margin-top: -10%;
+        width: 35%;
+        height: 35%;
+        min-width: 200px;
+        min-height: 200px;
+    }
+    .bio__role {
+        margin-top: -5%;
+    }
+
+    .bio__name {
+        z-index: 1;
+        margin-right: 25%;
+    }
+
+    .bio__first-name,
+    .bio__last-name {
+        margin: 0px;
+        font-size: 10vw;
+    }
+
+    .bio__last-name {
+        margin-left: 10%;
+    }
+
+    .bio__links-list {
+        display: block;
+        list-style-type: disc;
+        margin-block-start: 0px;
+        margin-block-end: 0px;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 0px;
+        display: flex;
+    }
+
+    .bio__links-list-item {
+        list-style-type: none;
+        background: white;
+        padding: 5px;
+        border-radius: 10%;
+        margin: 5px;
+    }
+}
