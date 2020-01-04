@@ -1,0 +1,11 @@
+const path = require('path');
+const env = require('./settings.dev');
+const webpackConfig = require(`./webpack.config`);
+
+module.exports = {
+    entry: { website: './src/loader.js' },
+    output: {
+        ...webpackConfig.output,
+        path: path.resolve(__dirname, 'dist'),
+    },
+};
