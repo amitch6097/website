@@ -4,17 +4,57 @@ import './Home.less';
 import P5Frame from '../../components/P5Frame/P5Frame';
 import Bio from '../../components/Bio/Bio';
 import Projects from 'src/components/Projects/Projects';
+import Modal from '../../components/Modal/Modal';
+
+const PROJECTS: Website.IProject[] = [
+    {
+        label: '1',
+        tags: [
+            {
+                label: 'p5',
+            },
+            {
+                label: 'JavaScript',
+            },
+        ],
+        image: 'https://i.imgur.com/xtoLyW2.jpg',
+        links: [
+            {
+                label: 'First Link',
+                url: 'google.com',
+            },
+            {
+                label: 'Next Link',
+                url: 'google.com',
+            },
+        ],
+        description:
+            'AFKNALSNAGK vsa vksl df alkdfalkagd klsfad mkafm dfkl adfk aflkdkl afkl afkdl ',
+        url: 'google.com',
+        images: [
+            'https://i.imgur.com/xtoLyW2.jpg',
+            'https://i.imgur.com/xtoLyW2.jpg',
+            'https://i.imgur.com/xtoLyW2.jpg',
+        ],
+    },
+];
 
 export default function Home() {
-    const [modalOpen, setModalOpen] = React.useState(false);
+    const [project, setProject] = React.useState(undefined);
+    const modalOpen = Boolean(project);
     return (
         <div className="home-page">
             <div
                 style={{ display: modalOpen ? 'flex' : 'none' }}
                 className="home-page__modal home-page__section"
             >
-                Modal
-                <button onClick={() => setModalOpen(false)}>Close</button>
+                {modalOpen && (
+                    <Modal
+                        onCloseModal={() => setProject(undefined)}
+                        project={project}
+                        projects={PROJECTS}
+                    />
+                )}
             </div>
 
             <div className="home-page__header">
@@ -38,49 +78,8 @@ export default function Home() {
             <div className="home-page__section">
                 Projects
                 <Projects
-                    onClick={() => setModalOpen(true)}
-                    projects={[
-                        {
-                            label: '1',
-                            url: 'google.com',
-                            img: 'https://i.imgur.com/xtoLyW2.jpg',
-                        },
-                        {
-                            label: '1',
-                            url: 'google.com',
-                            img: 'https://i.imgur.com/xtoLyW2.jpg',
-                        },
-                        {
-                            label: '1',
-                            url: 'google.com',
-                            img: 'https://i.imgur.com/xtoLyW2.jpg',
-                        },
-                        {
-                            label: '1',
-                            url: 'google.com',
-                            img: 'https://i.imgur.com/xtoLyW2.jpg',
-                        },
-                        {
-                            label: '1',
-                            url: 'google.com',
-                            img: 'https://i.imgur.com/xtoLyW2.jpg',
-                        },
-                        {
-                            label: '1',
-                            url: 'google.com',
-                            img: 'https://i.imgur.com/xtoLyW2.jpg',
-                        },
-                        {
-                            label: '1',
-                            url: 'google.com',
-                            img: 'https://i.imgur.com/xtoLyW2.jpg',
-                        },
-                        {
-                            label: '1',
-                            url: 'google.com',
-                            img: 'https://i.imgur.com/xtoLyW2.jpg',
-                        },
-                    ]}
+                    onClick={project => setProject(project)}
+                    projects={PROJECTS}
                 />
             </div>
 

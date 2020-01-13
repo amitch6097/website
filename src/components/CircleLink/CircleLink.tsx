@@ -1,10 +1,16 @@
 import React from 'react';
 import './CircleLink.less';
 
-export default function CircleLink({ text, link }) {
+interface ICircleLinkProps {
+    onClick?: () => void;
+    link?: string;
+    label: string;
+}
+
+export default function CircleLink({ label, link, onClick }: ICircleLinkProps) {
     return (
-        <div className="circle-link">
-            <a href={link}>{text}</a>
+        <div onClick={onClick} className="circle-link">
+            <a href={link}>{label}</a>
         </div>
     );
 }

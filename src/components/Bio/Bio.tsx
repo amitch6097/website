@@ -1,6 +1,8 @@
 import React from 'react';
 import './Bio.less';
 
+import LocalImage from '../LocalImage/LocalImage';
+
 export default function Bio({}) {
     return (
         <div className="bio">
@@ -8,7 +10,11 @@ export default function Bio({}) {
                 <h1 className="bio__first-name">Andrew</h1>
                 <h1 className="bio__last-name">Mitchell</h1>
             </div>
-            <img className="bio__image" src="https://i.imgur.com/xtoLyW2.jpg" />
+            <LocalImage
+                className="bio__image"
+                alt="bio-image"
+                src="https://i.imgur.com/xtoLyW2.jpg"
+            />
             <h2 className="bio__role">Software Engineer</h2>
             <div className="bio__links">
                 <ul className="bio__links-list">
