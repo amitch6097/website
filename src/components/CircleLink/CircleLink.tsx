@@ -10,7 +10,9 @@ interface ICircleLinkProps {
 export default function CircleLink({ label, link, onClick }: ICircleLinkProps) {
     return (
         <div onClick={onClick} className="circle-link">
-            <a href={link}>{label}</a>
+            <a target="_blank" href={link}>
+                {label}
+            </a>
         </div>
     );
 }

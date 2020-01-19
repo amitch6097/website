@@ -1,0 +1,83 @@
+.project-modal {
+    width: 100%;
+    height: 100%;
+
+    .project-modal__content-images {
+        display: flex;
+        justify-content: center;
+        .project-modal__content-images-image-container {
+            width: 33%;
+            height: 33vw;
+            display: flex;
+            img {
+                width: 100%;
+                margin: auto;
+            }
+        }
+    }
+
+    .project-modal__content-text {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 40px;
+
+        .project-modal__content-section {
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+        }
+
+        .project-modal__content-text-right-projects-project,
+        .project-modal__content-text-right-tags-tag,
+        .project-modal__content-text-left-links-link {
+            margin: 5px;
+        }
+
+        .project-modal__content-text-left {
+            display: flex;
+            flex-direction: column;
+            .project-modal__content-text-left-label {
+            }
+
+            .project-modal__content-text-left-links {
+            }
+
+            .project-modal__content-text-left-description {
+            }
+        }
+
+        .project-modal__content-text-right {
+            display: flex;
+            flex-direction: column;
+            width: 250px;
+
+            .project-modal__content-text-right-section-label {
+                text-align: center;
+                border: 1px solid white;
+                border-left: none;
+                border-top: none;
+                border-right: none;
+                padding-bottom: 10px;
+            }
+        }
+        .project-modal__content-text-right-section-tags {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .project-modal__content-text-right-projects-project {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    .project-modal__close-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 10px;
+    }
+}
