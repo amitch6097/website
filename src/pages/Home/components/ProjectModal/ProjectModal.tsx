@@ -24,6 +24,11 @@ export default function ProjectModal() {
         };
     });
 
+    const projectModalOnSetTag = nextTag => {
+        onCloseProjectModal();
+        onSetTag(nextTag);
+    };
+
     return (
         <div className="project-modal">
             <div className="project-modal__content">
@@ -31,7 +36,10 @@ export default function ProjectModal() {
                     {images &&
                         images.map((image, index) => {
                             return (
-                                <div className="project-modal__content-images-image-container">
+                                <div
+                                    key={image + index}
+                                    className="project-modal__content-images-image-container"
+                                >
                                     <LocalImage
                                         src={image}
                                         alt={`${
@@ -44,20 +52,27 @@ export default function ProjectModal() {
                     {p5 &&
                         [null, null, null].map((empty, index) => {
                             return (
-                                <div className="project-modal__content-images-image-container">
-                                    <P5Frame frameURL={p5} />
+                                <div
+                                    key={index}
+                                    className="project-modal__content-images-image-container"
+                                >
+                                    <P5Frame
+                                        frameURL={p5}
+                                        height={'33vw'}
+                                        width={'33vw'}
+                                    />
                                 </div>
                             );
                         })}
                 </div>
                 <div className="project-modal__content-text">
                     <div className="project-modal__content-text-left">
-                        <div className="project-modal__content-section modal__content-text-left-label">
+                        <h1 className="project-modal__content-section modal__content-text-left-label">
                             {label}
-                        </div>
-                        <div className="project-modal__content-section  modal__content-text-left-description">
+                        </h1>
+                        <p className="project-modal__content-section  modal__content-text-left-description">
                             {description}
-                        </div>
+                        </p>
                         <div className="project-modal__content-section modal__content-text-left-links">
                             {links &&
                                 links.map(link => {
@@ -78,9 +93,9 @@ export default function ProjectModal() {
                     <div className="project-modal__content-text-right">
                         {tags && (
                             <div className="project-modal__content-section tags">
-                                <div className="project-modal__content-text-right-section-label tags-label">
+                                <h2 className="project-modal__content-text-right-section-label tags-label">
                                     Tags
-                                </div>
+                                </h2>
                                 <div className="project-modal__content-text-right-section-tags">
                                     {tags.map(tag => {
                                         return (
@@ -92,7 +107,9 @@ export default function ProjectModal() {
                                                     label={tag.label}
                                                     link=""
                                                     onClick={() =>
-                                                        onSetTag(tag)
+                                                        projectModalOnSetTag(
+                                                            tag
+                                                        )
                                                     }
                                                 />
                                             </div>
@@ -103,13 +120,16 @@ export default function ProjectModal() {
                         )}
                         {randomProjects && (
                             <div className="project-modal__content-section projects">
-                                <div className="project-modal__content-text-right-section-label projects-label">
+                                <h2 className="project-modal__content-text-right-section-label projects-label">
                                     Projects
-                                </div>
+                                </h2>
                                 <div className="project-modal__content-text-right-section-projects">
                                     {randomProjects.map(project => {
                                         return (
-                                            <div className="project-modal__content-text-right-projects-project">
+                                            <div
+                                                key={project.label}
+                                                className="project-modal__content-text-right-projects-project"
+                                            >
                                                 <OvalLink
                                                     label={project.label}
                                                     link=""

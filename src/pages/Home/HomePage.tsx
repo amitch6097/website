@@ -6,13 +6,19 @@ import Projects from 'src/pages/Home/components/Projects/Projects';
 import ProjectModal from './components/ProjectModal/ProjectModal';
 import OvalLink from '../../components/OvalLink/OvalLink';
 import Tags from './components/Tags/Tags';
+
+import useDarkMode from './hooks/useDarkMode';
+
 import { HomeContext } from './context/HomeContext';
 
 export default function Home() {
+    const { darkMode, toggleDarkMode } = useDarkMode();
     const { projectModalOpen } = React.useContext(HomeContext);
-
     return (
-        <div className="home-page">
+        <div className={`home-page ${darkMode ? 'dark-mode' : ''}`}>
+            <div className="home-page__dark-mode-button">
+                <OvalLink onClick={toggleDarkMode} label="Toggle Dark Mode" />
+            </div>
             <div
                 style={{ display: projectModalOpen ? 'flex' : 'none' }}
                 className="home-page__modal home-page__section"

@@ -10,3 +10,14 @@ export default function Home(props) {
         </HomeContextProvider>
     );
 }
+
+/**
+ * @TODO
+ *
+ * Modal Below 800px wide design
+ * Projects Grid Css
+ * Large View Projects overlap and in Modal Project too
+ * Contact
+ * Spring Animations
+ * Dark Mode
+ */
