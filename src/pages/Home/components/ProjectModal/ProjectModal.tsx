@@ -14,6 +14,7 @@ export default function ProjectModal() {
         onSetTag,
         onCloseProjectModal,
         randomProjects,
+        onProjectModalOnSetTag,
     } = React.useContext(HomeContext);
     const { label, images, description, links, tags, p5 } = project;
 
@@ -23,11 +24,6 @@ export default function ProjectModal() {
             document.documentElement.style.overflow = 'auto';
         };
     });
-
-    const projectModalOnSetTag = nextTag => {
-        onCloseProjectModal();
-        onSetTag(nextTag);
-    };
 
     return (
         <div className="project-modal">
@@ -107,7 +103,7 @@ export default function ProjectModal() {
                                                     label={tag.label}
                                                     link=""
                                                     onClick={() =>
-                                                        projectModalOnSetTag(
+                                                        onProjectModalOnSetTag(
                                                             tag
                                                         )
                                                     }
@@ -121,7 +117,7 @@ export default function ProjectModal() {
                         {randomProjects && (
                             <div className="project-modal__content-section projects">
                                 <h2 className="project-modal__content-text-right-section-label projects-label">
-                                    Projects
+                                    More Projects
                                 </h2>
                                 <div className="project-modal__content-text-right-section-projects">
                                     {randomProjects.map(project => {

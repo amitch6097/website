@@ -13,6 +13,7 @@ interface IHomeContextState {
     onSetProject: (project: Website.IProject) => void;
     projectModalOpen: boolean;
     onCloseProjectModal: () => void;
+    onProjectModalOnSetTag: (nextTag: Website.ITag) => void;
 }
 
 const MAX_PROJECTS = 6;
@@ -76,6 +77,7 @@ const INITIAL_STATE: IHomeContextState = {
     onSetTag: (tag: Website.ITag) => {},
     onSetProject: (project: Website.IProject) => {},
     onCloseProjectModal: () => {},
+    onProjectModalOnSetTag: (tag: Website.ITag) => {},
 };
 
 export const HomeContext = React.createContext(INITIAL_STATE);
@@ -115,6 +117,14 @@ export class HomeContextProvider extends React.Component<
         });
     };
 
+    onProjectModalOnSetTag = nextTag => {
+        this.setState({
+            project: undefined,
+            randomProjects: undefined,
+            tag: nextTag,
+        });
+    };
+
     render() {
         return (
             <HomeContext.Provider
@@ -123,6 +133,7 @@ export class HomeContextProvider extends React.Component<
                     onSetTag: this.onSetTag,
                     onSetProject: this.onSetProject,
                     onCloseProjectModal: this.onCloseProjectModal,
+                    onProjectModalOnSetTag: this.onProjectModalOnSetTag,
                     chunckedProjects: chunkProjects(
                         this.state.tag,
                         ProjectsData
