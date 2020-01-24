@@ -45,7 +45,7 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="home-page__section section-projects">
+            <div className="section-projects">
                 <h2>Projects</h2>
                 <Tags />
                 <Projects />

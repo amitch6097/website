@@ -7,7 +7,7 @@ import LocalImage from '../../../../components/LocalImage/LocalImage';
 export default function Bio({}) {
     return (
         <div className="bio">
-            {/* <div className="bio__name">
+            <div className="bio__name">
                 <h1 className="bio__first-name">Andrew</h1>
                 <h1 className="bio__last-name">Mitchell</h1>
             </div>
@@ -16,7 +16,7 @@ export default function Bio({}) {
                 alt="bio-image"
                 src="https://i.imgur.com/xtoLyW2.jpg"
             />
-            <h2 className="bio__role">Software Engineer</h2> */}
+            <h2 className="bio__role">Software Engineer</h2>
             <div className="bio__links">
                 <ul className="bio__links-list">
                     {[
