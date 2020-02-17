@@ -8,7 +8,7 @@ interface IProjectCardProps {
     image?: string;
     label: string;
     onClick: () => void;
-    p5?: string;
+    p5?: Website.IP5Frame;
 }
 
 export default function ProjectCard({
@@ -22,13 +22,17 @@ export default function ProjectCard({
             <div className="project-card__container">
                 <div className="project-card__img-container">
                     {p5 ? (
-                        <P5Frame width={'100%'} height={'100%'} frameURL={p5} />
+                        <P5Frame
+                            width={'100%'}
+                            height={'100%'}
+                            frameURL={p5.frameURL}
+                        />
                     ) : (
                         <LocalImage alt={label} src={image} />
                     )}
                 </div>
                 <div className="project-card__label-container">
-                    <div className="project-card__label">{label}</div>
+                    <h3 className="project-card__label">{label}</h3>
                 </div>
             </div>
         </div>

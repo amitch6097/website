@@ -4,8 +4,9 @@ import HomePage from './HomePage';
 import { HomeContextProvider } from './context/HomeContext';
 
 export default function Home(props) {
+    const {projectId} = props?.match?.params ?? {}
     return (
-        <HomeContextProvider>
+        <HomeContextProvider projectId={projectId}>
             <HomePage {...props} />
         </HomeContextProvider>
     );

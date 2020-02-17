@@ -1,6 +1,7 @@
 import React from 'react';
 import Projects from 'src/pages/Home/components/Projects/Projects';
 import { ProjectsData } from '../../../ProjectsData';
+import history from '../../../history';
 
 interface IHomeContextState {
     tag: Website.ITag;
@@ -59,11 +60,17 @@ function randomPop(array) {
 
 function randomProjects(projects) {
     let projectsCopy = [...projects];
-    return new Array(MAX_PROJECTS).fill(undefined).map(u => {
-        const [project, nextProjectsCopy] = randomPop(projectsCopy);
-        projectsCopy = nextProjectsCopy;
-        return project;
-    });
+    return new Array(Math.min(MAX_PROJECTS, projects.length))
+        .fill(undefined)
+        .map(u => {
+            const [project, nextProjectsCopy] = randomPop(projectsCopy);
+            projectsCopy = nextProjectsCopy;
+            return project;
+        });
+}
+
+function getProject(projectId: string) {
+    return ProjectsData.find((project) => project.id === projectId);
 }
 
 const INITIAL_STATE: IHomeContextState = {
@@ -82,11 +89,39 @@ const INITIAL_STATE: IHomeContextState = {
 
 export const HomeContext = React.createContext(INITIAL_STATE);
 
+export interface IHomeContextProviderProps {
+    projectId?: string
+}
+
 export class HomeContextProvider extends React.Component<
-    {},
+    IHomeContextProviderProps,
     IHomeContextState
 > {
-    state = { ...INITIAL_STATE };
+
+    constructor(props) {
+        super(props);
+        this.state = { ...INITIAL_STATE };
+
+        if (props.projectId) {
+            const project = getProject(props.projectId);
+            this.state = { 
+                ...this.state, 
+                project,
+                randomProjects: randomProjects(ProjectsData)
+             };
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.projectId !== this.props.projectId) {
+            const project = getProject(this.props.projectId);
+            this.state = { 
+                ...this.state, 
+                project,
+                randomProjects: randomProjects(ProjectsData)
+             };
+        }
+    }
 
     onSetTag = nextTag => {
         const { tag } = this.state;
@@ -102,6 +137,11 @@ export class HomeContextProvider extends React.Component<
     };
 
     onSetProject = nextProject => {
+        if (nextProject) {
+            history.push(`/projects/${nextProject.id}`);
+        } else {
+            history.push('/');
+        }
         this.setState({
             project: nextProject,
             randomProjects: nextProject
@@ -111,6 +151,7 @@ export class HomeContextProvider extends React.Component<
     };
 
     onCloseProjectModal = () => {
+        history.push('/');
         this.setState({
             project: undefined,
             randomProjects: undefined,

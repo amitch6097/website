@@ -9,5 +9,11 @@ interface ILocalImageProps {
 }
 
 export default function LocalImage({ className, src, alt }: ILocalImageProps) {
-    return <img className={className} src={Doggo.default} alt={alt} />;
+    return (
+        <img
+            className={className}
+            src={(src && '../../../src' + src) || Doggo.default}
+            alt={alt}
+        />
+    );
 }

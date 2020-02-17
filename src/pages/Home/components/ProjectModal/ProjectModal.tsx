@@ -53,7 +53,8 @@ export default function ProjectModal() {
                                     className="project-modal__content-images-image-container"
                                 >
                                     <P5Frame
-                                        frameURL={p5}
+                                        frameURL={p5.frameURL}
+                                        links={p5.links}
                                         height={'33vw'}
                                         width={'33vw'}
                                     />
@@ -63,9 +64,9 @@ export default function ProjectModal() {
                 </div>
                 <div className="project-modal__content-text">
                     <div className="project-modal__content-text-left">
-                        <h1 className="project-modal__content-section modal__content-text-left-label">
+                        <h2 className="project-modal__content-section modal__content-text-left-label">
                             {label}
-                        </h1>
+                        </h2>
                         <p className="project-modal__content-section  modal__content-text-left-description">
                             {description}
                         </p>
@@ -89,9 +90,9 @@ export default function ProjectModal() {
                     <div className="project-modal__content-text-right">
                         {tags && (
                             <div className="project-modal__content-section tags">
-                                <h2 className="project-modal__content-text-right-section-label tags-label">
+                                <h3 className="project-modal__content-text-right-section-label tags-label">
                                     Tags
-                                </h2>
+                                </h3>
                                 <div className="project-modal__content-text-right-section-tags">
                                     {tags.map(tag => {
                                         return (
@@ -116,9 +117,9 @@ export default function ProjectModal() {
                         )}
                         {randomProjects && (
                             <div className="project-modal__content-section projects">
-                                <h2 className="project-modal__content-text-right-section-label projects-label">
+                                <h3 className="project-modal__content-text-right-section-label projects-label">
                                     More Projects
-                                </h2>
+                                </h3>
                                 <div className="project-modal__content-text-right-section-projects">
                                     {randomProjects.map(project => {
                                         return (

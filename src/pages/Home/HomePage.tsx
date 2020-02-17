@@ -8,10 +8,13 @@ import OvalLink from '../../components/OvalLink/OvalLink';
 import Tags from './components/Tags/Tags';
 
 import useDarkMode from './hooks/useDarkMode';
-
 import { HomeContext } from './context/HomeContext';
 
-export default function Home() {
+export interface IHomeProps {
+    projectId?: string;
+}
+
+export default function Home({id}) {
     const { darkMode, toggleDarkMode } = useDarkMode();
     const { projectModalOpen } = React.useContext(HomeContext);
     return (
@@ -31,13 +34,20 @@ export default function Home() {
                     <P5Frame
                         width={'100%'}
                         height={'100%'}
-                        label={'10PRINT'}
                         frameURL={
                             'https://editor.p5js.org/mitch702/embed/p6vC1kfsP'
                         }
-                        linkURL={
-                            'https://editor.p5js.org/mitch702/sketches/p6vC1kfsP'
-                        }
+                        links={[
+                            {
+                                url:
+                                    'https://editor.p5js.org/mitch702/sketches/p6vC1kfsP',
+                                label: '< >',
+                            },
+                            {
+                                url: 'https://10print.org/',
+                                label: '10 PRINT',
+                            },
+                        ]}
                     />
                 </div>
                 <div className="home-page__header-bio">

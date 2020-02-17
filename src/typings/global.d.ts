@@ -12,14 +12,20 @@ declare namespace Website {
         url: string;
     }
 
+    interface IP5Frame {
+        frameURL: string;
+        links?: ILink[];
+    }
+
     interface IProject {
+        id: string;
         label: string;
         tags?: ITag[];
         description?: string;
         image?: string;
         images?: string[];
-        url: string;
         links?: ILink[];
-        p5?: string;
+        p5?: IP5Frame;
+        date?: string;
     }
 }

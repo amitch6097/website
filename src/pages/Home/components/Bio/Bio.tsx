@@ -14,7 +14,7 @@ export default function Bio({}) {
             <LocalImage
                 className="bio__image"
                 alt="bio-image"
-                src="https://i.imgur.com/xtoLyW2.jpg"
+                src={'/assets/images/doggo.png'}
             />
             <h2 className="bio__role">Software Engineer</h2>
             <div className="bio__links">
